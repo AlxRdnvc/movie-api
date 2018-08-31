@@ -15,6 +15,12 @@ class MoviesController extends Controller
      */
     public function index()
     {
+        $title = request()->query('title');
+
+        if($title){
+            return Movie::searchMovie($title);
+        }
+        
         return Movie::all();
     }
 
